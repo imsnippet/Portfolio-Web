@@ -1,0 +1,66 @@
+---
+import { Icon } from 'astro-icon/components'
+
+const currentYear = new Date().getFullYear()
+---
+
+<footer
+    class='w-full py-6 mt-10 text-center text-sm text-gray-500 dark:text-gray-400'
+>
+    <p class='bg-secondary-background'>
+        © {currentYear} Subhan Kashif. All rights reserved.
+    </p>
+    <div class='flex justify-center gap-4 mt-3'>
+        <a
+            href='https://github.com/imsnippet'
+            target='_blank'
+            rel='noopener noreferrer'
+            title='GitHub'
+            class='hover:text-primary transition-colors'
+            aria-label='GitHub'
+        >
+            <Icon name='mdi:github' class='h-6 w-6' />
+        </a>
+        <a
+            href='https://linkedin.com/in/subhankashif'
+            target='_blank'
+            rel='noopener noreferrer'
+            title='LinkedIn'
+            class='hover:text-primary transition-colors'
+            aria-label='LinkedIn'
+        >
+            <Icon name='mdi:linkedin' class='h-6 w-6' />
+        </a>
+        <button
+            id='footer-copy-email-btn'
+            title='Copy Email'
+            class='hover:text-primary transition-colors cursor-pointer relative group'
+            aria-label='Copy Email'
+        >
+            <Icon name='mdi:email-outline' class='h-6 w-6' />
+            <span id="footer-copy-tooltip" class="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-neutral-900 text-white text-xs rounded-md shadow-md border border-neutral-700 opacity-0 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-50">
+                Copied!
+            </span>
+        </button>
+    </div>
+</footer>
+
+<script>
+    const footerBtn = document.getElementById('footer-copy-email-btn');
+    const footerTooltip = document.getElementById('footer-copy-tooltip');
+    
+    if (footerBtn && footerTooltip) {
+        footerBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText('imsnippet@gmail.com').then(() => {
+                footerTooltip.classList.remove('opacity-0');
+                footerTooltip.classList.add('opacity-100');
+                setTimeout(() => {
+                    footerTooltip.classList.remove('opacity-100');
+                    footerTooltip.classList.add('opacity-0');
+                }, 2000);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        });
+    }
+</script>

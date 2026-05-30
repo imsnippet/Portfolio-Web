@@ -1,0 +1,109 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { motion } from 'framer-motion'
+import { Card, CardContent } from '@/components/ui/card'
+
+import pythonLogo from '@/assets/logos/python.svg'
+import djangoLogo from '@/assets/logos/django.svg'
+import fastapiLogo from '@/assets/logos/fastapi.svg'
+import automationLogo from '@/assets/logos/automation.svg'
+import html5Logo from '@/assets/logos/html5.svg'
+import css3Logo from '@/assets/logos/css3.svg'
+import javascriptLogo from '@/assets/logos/javascript.svg'
+import jsonLogo from '@/assets/logos/json.svg'
+
+import githubLogo from '@/assets/logos/github.svg'
+
+import vscodeLogo from '@/assets/logos/vs-code.svg'
+import antigravityLogo from '@/assets/logos/antigravity-color.svg'
+import n8nLogo from '@/assets/logos/n8n.svg'
+import claudeLogo from '@/assets/logos/claude.svg'
+import copilotLogo from '@/assets/logos/copilot-icon.svg'
+import cursorLogo from '@/assets/logos/cursor.svg'
+import ollamaLogo from '@/assets/logos/ollama.svg'
+
+const coreTechnologies = [
+    { name: 'Python', logo: pythonLogo },
+    { name: 'HTML5', logo: html5Logo },
+    { name: 'CSS3', logo: css3Logo },
+    { name: 'JavaScript', logo: javascriptLogo },
+    { name: 'JSON', logo: jsonLogo },
+    { name: 'Automation', logo: automationLogo },
+    { name: 'FastAPI', logo: fastapiLogo },
+    { name: 'Django', logo: djangoLogo },
+]
+
+const developmentTools = [
+    { name: 'GitHub', logo: githubLogo, class: 'dark:invert' },
+    { name: 'VS Code', logo: vscodeLogo },
+    { name: 'Antigravity', logo: antigravityLogo },
+    { name: 'N8n', logo: n8nLogo },
+    { name: 'Claude', logo: claudeLogo },
+    { name: 'Copilot', logo: copilotLogo },
+    { name: 'Cursor', logo: cursorLogo, class: 'dark:invert' },
+    { name: 'Ollama', logo: ollamaLogo, class: 'dark:invert' },
+]
+---
+
+<Layout
+    title='Skills'
+    description='A showcase of Subhan Kashif’s core skills, technologies, and development tools'
+>
+    <section class='py-8 px-4 lg:px-0 space-y-6 overflow-auto'>
+        <!-- Core Technologies -->
+        <div>
+            <h2 class='text-2xl font-semibold mb-2'>Core Technologies</h2>
+            <div class='h-1 w-48 bg-main mb-6 rounded-full'></div>
+
+            <div class='flex gap-4 overflow-x-auto pb-2 snap-x flex-wrap'>
+                {
+                    coreTechnologies.map((skill) => (
+                        <Card className='flex items-center justify-center gap-3 py-2.5 px-4 bg-secondary-background transition hover:shadow-md hover:border-primary/30'>
+                            <CardContent className='flex items-center justify-center gap-3 p-0'>
+                                {skill.dark ? (
+                                    <>
+                                        <img src={skill.logo.src} alt={skill.name} class={`h-8 w-8 object-contain dark:hidden ${skill.class || ''}`} />
+                                        <img src={skill.dark.src} alt={skill.name} class={`h-8 w-8 object-contain hidden dark:block ${skill.class || ''}`} />
+                                    </>
+                                ) : (
+                                    <img src={skill.logo.src} alt={skill.name} class={`h-8 w-8 object-contain ${skill.class || ''}`} />
+                                )}
+                                <span class='text-md font-medium text-foreground'>
+                                    {skill.name}
+                                </span>
+                            </CardContent>
+                        </Card>
+                    ))
+                }
+            </div>
+        </div>
+
+        <!-- Developer Tools -->
+        <div>
+            <h2 class='text-2xl font-semibold mb-2'>Development Tools</h2>
+            <div class='h-1 w-36 bg-chart-4 mb-6 rounded-full'></div>
+
+            <div class='flex gap-4 overflow-x-auto pb-2 snap-x flex-wrap'>
+                {
+                    developmentTools.map((skill) => (
+                        <Card className='flex items-center justify-center gap-3 py-2.5 px-4 bg-secondary-background transition hover:shadow-md hover:border-primary/30'>
+                            <CardContent className='flex items-center justify-center gap-3 p-0'>
+                                {skill.dark ? (
+                                    <>
+                                        <img src={skill.logo.src} alt={skill.name} class={`h-8 w-8 object-contain dark:hidden ${skill.class || ''}`} />
+                                        <img src={skill.dark.src} alt={skill.name} class={`h-8 w-8 object-contain hidden dark:block ${skill.class || ''}`} />
+                                    </>
+                                ) : (
+                                    <img src={skill.logo.src} alt={skill.name} class={`h-8 w-8 object-contain ${skill.class || ''}`} />
+                                )}
+                                <span class='text-md font-medium text-foreground'>
+                                    {skill.name}
+                                </span>
+                            </CardContent>
+                        </Card>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+</Layout>

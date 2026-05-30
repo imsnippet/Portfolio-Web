@@ -1,0 +1,113 @@
+---
+import { Image } from 'astro:assets'
+import Layout from '@/layouts/Layout.astro'
+import '../styles/globals.css'
+
+import PythonLogo from '@/assets/logos/python.svg'
+import DjangoLogo from '@/assets/logos/django.svg'
+import FastAPILogo from '@/assets/logos/fastapi.svg'
+import AutomationLogo from '@/assets/logos/automation.svg'
+
+const experienceStartDate = new Date('2024-09-01')
+const now = new Date()
+
+let experienceYears = now.getFullYear() - experienceStartDate.getFullYear()
+const hasNotReachedAnniversaryThisYear =
+    now.getMonth() < experienceStartDate.getMonth() ||
+    (now.getMonth() === experienceStartDate.getMonth() &&
+        now.getDate() < experienceStartDate.getDate())
+
+if (hasNotReachedAnniversaryThisYear) {
+    experienceYears -= 1
+}
+---
+
+<!-- <About /> -->
+<Layout>
+    <div
+        class='space-y-8 rounded-2xl border border-slate-200 bg-secondary-background p-6 shadow my-6'
+    >
+        {/* Intro */}
+        <div class='space-y-3'>
+            <h1 class='flex items-center gap-2 text-2xl font-bold'>Hey 👋</h1>
+            <p class='leading-relaxed'>
+                I'm <span class='font-semibold'>Subhan Kashif</span>, a
+                Python software developer based in{' '}
+                <span class='font-medium'>Pakistan 🇵🇰</span>.
+            </p>
+            <p class='leading-relaxed'>
+                For the past <strong>{experienceYears}+ years</strong>, I've
+                been living in the world of Python Software Development where the
+                main tools in my arsenal are:
+            </p>
+            <ul class='mt-3 space-y-2'>
+                <li class='flex items-center gap-2'>
+                    <img
+                        class='h-5 w-5 object-contain'
+                        src={PythonLogo.src}
+                        alt='Python'
+                    />
+                    <strong>Python</strong>
+                </li>
+                <li class='flex items-center gap-2'>
+                    <img
+                        class='h-5 w-5 object-contain'
+                        src={AutomationLogo.src}
+                        alt='Automation'
+                    />
+                    <strong>Automation</strong>
+                </li>
+                <li class='flex items-center gap-2'>
+                    <img
+                        class='h-5 w-5 object-contain'
+                        src={FastAPILogo.src}
+                        alt='FastAPI'
+                    />
+                    <strong>FastAPI</strong>
+                </li>
+                <li class='flex items-center gap-2'>
+                    <img
+                        class='h-5 w-5 object-contain'
+                        src={DjangoLogo.src}
+                        alt='Django'
+                    />
+                    <strong>Django</strong>
+                </li>
+            </ul>
+        </div>
+
+        {/* Industries */}
+        <div class='flex flex-row space-y-3'>
+            <div class='flex items-start gap-2 leading-relaxed'>
+                <p>
+                    I've had the pleasure to work across a bunch of industries,
+                    from{' '}
+                    <span class='font-bold'>Automation</span> to{' '}
+                    <span class='font-bold'>Python Developer</span>,{' '}
+                    <span class='font-bold'>Artificial Intelligence</span>, and even{' '}
+                    <span class='font-bold'>Content Creator</span>. Every project
+                    taught me something new and each of them came with its own
+                    set of wild challenges.
+                </p>
+            </div>
+        </div>
+
+        {/* Motivation */}
+        <div class='space-y-3'>
+            <p class='flex items-start gap-2 leading-relaxed'>
+                At the end of the day what really makes me happy is building
+                software that actually makes people's lives easier and my
+                learning deeper.
+            </p>
+        </div>
+
+        {/* Conclusion */}
+        <div class='space-y-3'>
+            <p class='flex items-start gap-2 leading-relaxed'>
+                Feel free to explore and check out my work, skills, and
+                projects. And you can reach out to me for anything related to
+                the above or just a quick chat.
+            </p>
+        </div>
+    </div>
+</Layout>

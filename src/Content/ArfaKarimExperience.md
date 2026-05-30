@@ -1,0 +1,4 @@
+- Completed an intensive 8-month training program in Artificial Intelligence and Machine Learning.
+- Gained comprehensive hands-on experience in ML algorithms, deep learning, and practical AI applications.
+- Built production-level AI systems and completed hands-on projects utilizing **TensorFlow** and **Scikit-learn**.
+- Developed foundational skills in integrating Large Language Models (LLMs) such as Claude and OpenAI APIs into scalable solutions.

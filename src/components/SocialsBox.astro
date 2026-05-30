@@ -1,0 +1,93 @@
+---
+import SendEmail from '@lucide/astro/icons/mail'
+import Download from '@lucide/astro/icons/download'
+import FileUser from '@lucide/astro/icons/file-user'
+
+import { Button } from '@/components/ui/button'
+import { Icon } from 'astro-icon/components'
+---
+
+<div
+    class='flex items-center gap-6 rounded-2xl bg-secondary-background/70 px-5 py-2 shadow-lg backdrop-blur-sm border border-border/20'
+>
+    <Button variant='outline' size='icon' asChild>
+        <a
+            href='https://github.com/imsnippet'
+            target='_blank'
+            aria-label='GitHub'
+            title='Visit GitHub'
+            class='transition-all duration-300 hover:scale-120 group'
+        >
+            <Icon
+                name='mdi:github'
+                class='h-6 w-6 transition-colors duration-300 group-hover:text-[#181717] dark:group-hover:text-[#f5f5f5]'
+            />
+        </a>
+    </Button>
+
+    <Button variant='outline' size='icon' asChild>
+        <a
+            href='https://linkedin.com/in/subhankashif'
+            target='_blank'
+            aria-label='LinkedIn'
+            title='Visit LinkedIn'
+            class='transition-all duration-300 hover:scale-120 group'
+        >
+            <Icon
+                name='mdi:linkedin'
+                class='h-6 w-6 transition-colors duration-300 group-hover:text-[#0A66C2]'
+            />
+        </a>
+    </Button>
+
+    <Button variant='outline' size='icon' asChild>
+        <button
+            id='copy-email-btn'
+            aria-label='Copy Email'
+            title='Copy Email'
+            class='relative transition-all duration-300 hover:scale-120 group cursor-pointer'
+        >
+            <SendEmail
+                class='h-6 w-6 transition-colors duration-300 group-hover:text-[#10B981]'
+            />
+            <span id="copy-tooltip" class="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-neutral-900 text-white text-xs rounded-md shadow-md border border-neutral-700 opacity-0 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-50">
+                Copied!
+            </span>
+        </button>
+    </Button>
+
+    <Button variant='outline' size='icon' asChild>
+        <a
+            href='/subhan-kashif-resume.pdf'
+            target='_blank'
+            rel='noopener noreferrer'
+            aria-label='View Resume'
+            title='View Resume'
+            class='transition-all duration-300 hover:scale-120 group'
+        >
+            <FileUser
+                class='h-6 w-6 transition-colors duration-300 group-hover:text-[#8b5cf6]'
+            />
+        </a>
+    </Button>
+</div>
+
+<script>
+    const btn = document.getElementById('copy-email-btn');
+    const tooltip = document.getElementById('copy-tooltip');
+    
+    if (btn && tooltip) {
+        btn.addEventListener('click', () => {
+            navigator.clipboard.writeText('imsnippet@gmail.com').then(() => {
+                tooltip.classList.remove('opacity-0');
+                tooltip.classList.add('opacity-100');
+                setTimeout(() => {
+                    tooltip.classList.remove('opacity-100');
+                    tooltip.classList.add('opacity-0');
+                }, 2000);
+            }).catch(err => {
+                console.error('Could not copy text: ', err);
+            });
+        });
+    }
+</script>

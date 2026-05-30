@@ -1,0 +1,151 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { Card, CardContent } from '@/components/ui/card'
+
+const projects = [
+    {
+        name: 'Voice-Ai-Bot',
+        title: 'VoiceMind AI Pro',
+        description:
+            'An advanced multi-lingual AI voice assistant for real-time transcription, translation (30+ languages), and intelligent conversational replies.',
+        url: 'https://github.com/imsnippet/Voice-Ai-Bot',
+        language: 'Python',
+        langColor: '#3776AB',
+        tags: ['AI', 'Voice', 'Multi-lingual', 'Transcription'],
+    },
+    {
+        name: 'Gsm-Gateway',
+        title: 'GSM Gateway',
+        description:
+            'An advanced SMS routing and management system for high-volume SMS dispatch through multiple GSM modems. Features intelligent SIM rotation, health monitoring, automatic blocking, and real-time Telegram notifications.',
+        url: 'https://github.com/imsnippet/Gsm-Gateway',
+        language: 'JavaScript',
+        langColor: '#F7DF1E',
+        tags: ['SMS', 'GSM', 'Automation', 'Telegram'],
+    },
+    {
+        name: 'AI-Recruiter-Pro',
+        title: 'AI Recruiter Pro',
+        description:
+            'An elite autonomous interview assessment platform designed to simulate high-stakes technical and professional interviews.',
+        url: 'https://github.com/imsnippet/AI-Recruiter-Pro',
+        language: 'JavaScript',
+        langColor: '#F7DF1E',
+        tags: ['AI', 'Interviews', 'Assessment', 'Automation'],
+    },
+    {
+        name: 'Omnix-Ai',
+        title: 'Omnix AI',
+        description:
+            'An advanced AI-powered personal companion with voice interaction, persistent memory, emotional intelligence, smart reminders, and productivity analytics — all running locally in your browser with complete privacy.',
+        url: 'https://github.com/imsnippet/Omnix-Ai',
+        language: 'HTML',
+        langColor: '#E34F26',
+        tags: ['AI', 'Privacy', 'Voice', 'Productivity'],
+    },
+    {
+        name: 'AI-Prompt-Reconstructor',
+        title: 'AI Prompt Reconstructor',
+        description:
+            'An advanced AI-powered tool for real-time YouTube transcript extraction, intelligent prompt reverse-engineering, and professional power prompt enhancement.',
+        url: 'https://github.com/imsnippet/AI-Prompt-Reconstructor',
+        language: 'Python',
+        langColor: '#3776AB',
+        tags: ['AI', 'YouTube', 'Prompts', 'NLP'],
+    },
+]
+---
+
+<Layout
+    title='Projects'
+    description='A collection of Subhan Kashif's projects, showcasing technical skills, problem-solving approaches, and the technologies used to bring ideas to life'
+>
+    <section class='py-8 px-4 lg:px-0 space-y-6'>
+        <div>
+            <h2 class='text-2xl font-semibold mb-2'>Projects</h2>
+            <div class='h-1 w-24 bg-main mb-6 rounded-full'></div>
+        </div>
+
+        <div class='grid grid-cols-1 md:grid-cols-2 gap-4'>
+            {
+                projects.map((project) => (
+                    <a
+                        href={project.url}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        class='group block'
+                    >
+                        <Card className='h-full bg-secondary-background border transition-all duration-300 hover:shadow-lg hover:border-primary/40 hover:-translate-y-0.5'>
+                            <CardContent className='p-5 flex flex-col gap-3 h-full'>
+                                {/* Header */}
+                                <div class='flex items-start justify-between gap-2'>
+                                    <div>
+                                        <h3 class='font-semibold text-lg leading-tight group-hover:text-primary transition-colors'>
+                                            {project.title}
+                                        </h3>
+                                        <p class='text-xs text-muted-foreground mt-0.5'>
+                                            {project.name}
+                                        </p>
+                                    </div>
+                                    {/* GitHub icon */}
+                                    <svg
+                                        class='h-5 w-5 shrink-0 text-muted-foreground group-hover:text-foreground transition-colors mt-0.5'
+                                        viewBox='0 0 24 24'
+                                        fill='currentColor'
+                                    >
+                                        <path d='M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z' />
+                                    </svg>
+                                </div>
+
+                                {/* Description */}
+                                <p class='text-sm text-muted-foreground leading-relaxed flex-1'>
+                                    {project.description}
+                                </p>
+
+                                {/* Footer */}
+                                <div class='flex items-center justify-between gap-2 mt-auto pt-2 border-t border-border/50'>
+                                    {/* Language */}
+                                    <div class='flex items-center gap-1.5'>
+                                        <span
+                                            class='h-3 w-3 rounded-full shrink-0'
+                                            style={`background-color: ${project.langColor}`}
+                                        />
+                                        <span class='text-xs text-muted-foreground'>
+                                            {project.language}
+                                        </span>
+                                    </div>
+
+                                    {/* Tags */}
+                                    <div class='flex flex-wrap gap-1 justify-end'>
+                                        {project.tags.slice(0, 3).map((tag) => (
+                                            <span class='text-xs px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium'>
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </a>
+                ))
+            }
+        </div>
+
+        {/* GitHub link */}
+        <div class='flex justify-center pt-4'>
+            <a
+                href='https://github.com/imsnippet'
+                target='_blank'
+                rel='noopener noreferrer'
+                class='flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors'
+            >
+                <svg class='h-4 w-4' viewBox='0 0 24 24' fill='currentColor'>
+                    <path
+                        d='M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z'
+                    ></path>
+                </svg>
+                View all on GitHub →
+            </a>
+        </div>
+    </section>
+</Layout>
